@@ -1,0 +1,38 @@
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: ponto-eletronico-app
+        container_name: ponto_app
+        restart: unless-stopped
+        privileged: true
+        environment:
+            TZ: America/Sao_Paulo  # <--- ADICIONE AQUI
+        working_dir: /var/www/html
+        volumes:
+            - ./:/var/www/html
+        ports:
+            - "8000:80"
+        networks:
+            - ponto-network
+
+    db:
+        image: mysql:5.7
+        container_name: ponto_db
+        restart: unless-stopped
+        privileged: true
+        environment:
+            MYSQL_DATABASE: laravel
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_PASSWORD: root
+            MYSQL_USER: laravel
+            TZ: America/Sao_Paulo  # <--- ADICIONE AQUI
+        volumes:
+            - ./dbdata:/var/lib/mysql
+        networks:
+            - ponto-network
+
+networks:
+    ponto-network:
+        driver: bridge

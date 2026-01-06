@@ -4,9 +4,12 @@
 /storage/*.key
 /vendor
 /nbproject
+.DS_Store
 .env
 .env.backup
 .phpunit.result.cache
+docker-compose.override.yml
+phpunit.xml
 Homestead.json
 Homestead.yaml
 npm-debug.log
