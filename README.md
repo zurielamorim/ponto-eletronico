@@ -122,3 +122,5 @@ docker compose exec app php artisan config:clear
 📄 Licença
 Este projeto está sob a licença MIT.
 
+https://pontoeletronico.ilab4.me
+
